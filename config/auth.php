@@ -34,12 +34,16 @@ return [
     | Supported: "session"
     |
     */
-
+    /*「ログイン画面の数だけ必要」*/
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+             'driver' => 'session',
+             'provider' => 'admins',
+         ],
     ],
 
     /*
@@ -64,6 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'admins' => [
+             'driver' => 'eloquent',
+             'model' => App\Models\Admin::class,
+         ],
 
         // 'users' => [
         //     'driver' => 'database',
