@@ -24,7 +24,7 @@ class UserController extends Controller
         // 総数を取得
         $total = $users->total();
         // ビューに変数を渡して返します
-        return view('users.index', compact('users', 'keyword', 'total'));
+         return view('admin.users.index', compact('users', 'keyword', 'total'));
     }
 
     /*会員詳細ページ*/

@@ -79,7 +79,7 @@ class UserTest extends TestCase
         $admin->password = Hash::make('nagoyameshi');
         $admin->save();
 
-        $adminUser = Admin::factory()->create();
+         $user = User::factory()->create();
 
         $response = $this->actingAs($admin, 'admin')->get(route('admin.users.show', $user));
 
