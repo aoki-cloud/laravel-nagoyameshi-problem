@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Admin;
 
 
 class UserTest extends TestCase
@@ -44,7 +45,7 @@ class UserTest extends TestCase
         $admin->password = Hash::make('nagoyameshi');
         $admin->save();
 
-        $response = $this->actingAs($adminUser, 'admin')->get(route('admin.users.index'));
+        $response = $this->actingAs($admin, 'admin')->get(route('admin.users.index'));
 
         $response->assertStatus(200);
     }
@@ -80,7 +81,7 @@ class UserTest extends TestCase
 
         $adminUser = Admin::factory()->create();
 
-        $response = $this->actingAs($adminUser, 'admin')->get(route('admin.users.show', $user));
+        $response = $this->actingAs($admin, 'admin')->get(route('admin.users.show', $user));
 
         $response->assertStatus(200);
     }
